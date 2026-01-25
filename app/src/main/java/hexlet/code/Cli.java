@@ -13,15 +13,33 @@ public final class Cli {
   public static void showGreeting() {
     System.out.println("Welcome to the Brain Games!");
     System.out.println("May I have your name?");
-    System.out.printf("Hello, %s!%n", readName());
   }
 
   /**
-   * Read name from console.
-   * @return name
+   * Read user name.
+   * @return user name
    */
-  static String readName() {
+  public static String readName() {
+    var name = readString();
+    System.out.printf("Hello, %s!%n", name);
+    return name;
+  }
+
+  /**
+   * Read string from console.
+   * @return string
+   */
+  public static String readString() {
     Scanner scanner = new Scanner(System.console().reader());
     return scanner.next();
+  }
+
+  /**
+   * Read int from console.
+   * @return value
+   */
+  public static int readInt() {
+    Scanner scanner = new Scanner(System.console().reader());
+    return scanner.nextInt();
   }
 }
