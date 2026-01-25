@@ -8,3 +8,8 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rychkov_java-project-61&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rychkov_java-project-61)
 
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rychkov_java-project-61&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rychkov_java-project-61)
+
+Step 5
+------
+
+Even game https://asciinema.org/connect/9dab1995-0c0a-493a-a631-887f3d019b43
