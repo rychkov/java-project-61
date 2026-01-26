@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.CalcGame;
 import hexlet.code.games.EvenGame;
 import java.util.List;
 
@@ -8,9 +9,13 @@ import java.util.List;
  */
 public final class App {
 
+  public static final int GREETING_KEY = 1;
+  public static final int EVEN_GAME_KEY = 2;
+  public static final int CALC_GAME_KEY = 3;
   private static final List<MenuItem> MENU_ITEMS = List.of(
-      new MenuItem(1, "Greet"),
-      new MenuItem(2, "Even"),
+      new MenuItem(GREETING_KEY, "Greet"),
+      new MenuItem(EVEN_GAME_KEY, "Even"),
+      new MenuItem(CALC_GAME_KEY, "Calc"),
       new MenuItem(0, "Exit")
   );
 
@@ -30,10 +35,12 @@ public final class App {
 
       number = Cli.readInt();
       switch (number) {
-        case 1: Cli.showGreeting();
+        case GREETING_KEY: Cli.showGreeting();
                 name = Cli.readName();
                 break;
-        case 2: new EvenGame().play(name);
+        case EVEN_GAME_KEY: Engine.play(name, new EvenGame());
+                break;
+        case CALC_GAME_KEY: Engine.play(name, new CalcGame());
                 break;
         default: break;
       }
