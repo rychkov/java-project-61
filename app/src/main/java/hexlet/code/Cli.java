@@ -30,7 +30,7 @@ public final class Cli {
    * @return string
    */
   public static String readString() {
-    Scanner scanner = new Scanner(System.console().reader());
+    Scanner scanner = new Scanner(System.in);
     return scanner.next();
   }
 
@@ -39,7 +39,7 @@ public final class Cli {
    * @return value
    */
   public static int readInt() {
-    Scanner scanner = new Scanner(System.console().reader());
+    Scanner scanner = new Scanner(System.in);
     return scanner.nextInt();
   }
 }
