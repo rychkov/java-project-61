@@ -62,5 +62,7 @@ public final class App {
         default: break;
       }
     } while (number != 0);
+    Cli.SCANNER.close();
+    System.exit(0);
   }
 }

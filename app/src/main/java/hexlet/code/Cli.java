@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public final class Cli {
 
+  public static final Scanner SCANNER = new Scanner(System.in);
+
   private Cli() {
   }
 
@@ -30,8 +32,7 @@ public final class Cli {
    * @return string
    */
   public static String readString() {
-    Scanner scanner = new Scanner(System.in);
-    return scanner.next();
+    return SCANNER.next();
   }
 
   /**
@@ -39,7 +40,6 @@ public final class Cli {
    * @return value
    */
   public static int readInt() {
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextInt();
+    return SCANNER.nextInt();
   }
 }
