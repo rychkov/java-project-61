@@ -6,8 +6,6 @@ import hexlet.code.games.GcdGame;
 import hexlet.code.games.ProgressionGame;
 import hexlet.code.games.PrimeGame;
 
-import java.util.List;
-
 /**
  * App main class.
  */
@@ -19,16 +17,6 @@ public final class App {
   public static final int GCD_GAME_KEY = 4;
   public static final int PROGRESSION_GAME_KEY = 5;
   public static final int PRIME_GAME_KEY = 6;
-
-  private static final List<MenuItem> MENU_ITEMS = List.of(
-      new MenuItem(GREETING_KEY, "Greet"),
-      new MenuItem(EVEN_GAME_KEY, "Even"),
-      new MenuItem(CALC_GAME_KEY, "Calc"),
-      new MenuItem(GCD_GAME_KEY, "GCD"),
-      new MenuItem(PROGRESSION_GAME_KEY, "Progression"),
-      new MenuItem(PRIME_GAME_KEY, "Prime"),
-      new MenuItem(0, "Exit")
-  );
 
   private App() {
   }
@@ -42,7 +30,14 @@ public final class App {
     String name = "";
     do {
       System.out.println("Please enter the game number and press Enter.");
-      MENU_ITEMS.forEach(item -> System.out.println(item.key() + " - " + item.name()));
+
+      System.out.printf("%d - %s%n", GREETING_KEY, "Greet");
+      System.out.printf("%d - %s%n", EVEN_GAME_KEY, "Even");
+      System.out.printf("%d - %s%n", CALC_GAME_KEY, "Calc");
+      System.out.printf("%d - %s%n", GCD_GAME_KEY, "GCD");
+      System.out.printf("%d - %s%n", PROGRESSION_GAME_KEY, "Progression");
+      System.out.printf("%d - %s%n", PRIME_GAME_KEY, "Prime");
+      System.out.printf("%d - %s%n", 0, "Exit");
 
       number = Cli.readInt();
       switch (number) {
