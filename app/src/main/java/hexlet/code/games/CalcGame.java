@@ -20,15 +20,19 @@ public final class CalcGame implements Game {
     var opCode = getSmallNumber(OP_BOUND);
     String opSymbol;
     switch (opCode) {
-      case 1: opSymbol = "-";
-              answer = String.valueOf(number1 - number2);
-              break;
-      case 2: opSymbol = "*";
-              answer = String.valueOf(number1 * number2);
-              break;
-      default: opSymbol = "+";
-              answer = String.valueOf(number1 + number2);
-              break;
+      case 0 -> {
+        opSymbol = "+";
+        answer = String.valueOf(number1 + number2);
+      }
+      case 1 -> {
+        opSymbol = "-";
+        answer = String.valueOf(number1 - number2);
+      }
+      case 2 -> {
+        opSymbol = "*";
+        answer = String.valueOf(number1 * number2);
+      }
+      default -> throw new UnsupportedOperationException("Unsupported opCode " + opCode);
     }
     return "%d %s %d".formatted(number1, opSymbol, number2);
   }
