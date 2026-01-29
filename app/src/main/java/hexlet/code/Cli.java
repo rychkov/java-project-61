@@ -45,7 +45,7 @@ public final class Cli {
         return SCANNER.nextInt();
       } else {
         //Skip non int input
-        SCANNER.next();
+        System.err.println("Unexpected input -> " + SCANNER.next());
       }
     } while (true);
   }
