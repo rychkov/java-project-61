@@ -40,6 +40,13 @@ public final class Cli {
    * @return value
    */
   public static int readInt() {
-    return SCANNER.nextInt();
+    do {
+      if (SCANNER.hasNextInt()) {
+        return SCANNER.nextInt();
+      } else {
+        //Skip non int input
+        SCANNER.next();
+      }
+    } while (true);
   }
 }
