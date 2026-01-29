@@ -42,10 +42,12 @@ public final class Cli {
   public static int readInt() {
     do {
       if (SCANNER.hasNextInt()) {
-        return SCANNER.nextInt();
+        var value = SCANNER.nextInt();
+        System.out.println("> Input -> " + value);
+        return value;
       } else {
         //Skip non int input
-        System.err.println("Unexpected input -> " + SCANNER.next());
+        System.out.println("> Unexpected input -> " + SCANNER.next());
       }
     } while (true);
   }
