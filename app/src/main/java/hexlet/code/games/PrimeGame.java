@@ -32,7 +32,7 @@ public final class PrimeGame implements Game {
       return false;
     }
     var sqrt = Math.round(Math.sqrt(number));
-    for (int i = THREE; i < sqrt; i+=2) {
+    for (int i = THREE; i < sqrt; i += 2) {
       if (number % i == 0) {
         return false;
       }

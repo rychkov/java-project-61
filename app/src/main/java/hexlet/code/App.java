@@ -1,6 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.CalcGame;
+import hexlet.code.games.EvenGame;
+import hexlet.code.games.GcdGame;
+import hexlet.code.games.ProgressionGame;
+import hexlet.code.games.PrimeGame;
 
 /**
  * App main class.
@@ -23,7 +27,8 @@ public final class App {
    */
   public static void main(final String[] args) {
     int number = 0;
-    String name = "";
+    Cli.showGreeting();
+    String name = Cli.readName();
     System.out.println("Please enter the game number and press Enter.");
 
     System.out.printf("%d - %s%n", GREETING_KEY, "Greet");
