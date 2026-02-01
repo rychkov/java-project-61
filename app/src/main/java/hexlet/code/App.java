@@ -28,43 +28,40 @@ public final class App {
   public static void main(final String[] args) {
     int number = 0;
     String name = "";
-    do {
-      System.out.println("Please enter the game number and press Enter.");
+    System.out.println("Please enter the game number and press Enter.");
 
-      System.out.printf("%d - %s%n", GREETING_KEY, "Greet");
-      System.out.printf("%d - %s%n", EVEN_GAME_KEY, "Even");
-      System.out.printf("%d - %s%n", CALC_GAME_KEY, "Calc");
-      System.out.printf("%d - %s%n", GCD_GAME_KEY, "GCD");
-      System.out.printf("%d - %s%n", PROGRESSION_GAME_KEY, "Progression");
-      System.out.printf("%d - %s%n", PRIME_GAME_KEY, "Prime");
-      System.out.printf("%d - %s%n", 0, "Exit");
+    System.out.printf("%d - %s%n", GREETING_KEY, "Greet");
+    System.out.printf("%d - %s%n", EVEN_GAME_KEY, "Even");
+    System.out.printf("%d - %s%n", CALC_GAME_KEY, "Calc");
+    System.out.printf("%d - %s%n", GCD_GAME_KEY, "GCD");
+    System.out.printf("%d - %s%n", PROGRESSION_GAME_KEY, "Progression");
+    System.out.printf("%d - %s%n", PRIME_GAME_KEY, "Prime");
+    System.out.printf("%d - %s%n", 0, "Exit");
 
-      number = Cli.readInt();
-      switch (number) {
-        case GREETING_KEY:
-          Cli.showGreeting();
-          name = Cli.readName();
-          break;
-        case EVEN_GAME_KEY:
-          Engine.play(new EvenGame());
-          break;
-        case CALC_GAME_KEY:
-          Engine.play(new CalcGame());
-          break;
-        case GCD_GAME_KEY:
-          Engine.play(new GcdGame());
-          break;
-        case PROGRESSION_GAME_KEY:
-          Engine.play(new ProgressionGame());
-          break;
-        case PRIME_GAME_KEY:
-          Engine.play(new PrimeGame());
-          break;
-        default:
-          number = 0;
-          break;
-      }
-    } while (number != 0);
+    number = Cli.readInt();
+    switch (number) {
+      case GREETING_KEY:
+        Cli.showGreeting();
+        name = Cli.readName();
+        break;
+      case EVEN_GAME_KEY:
+        Engine.play(new EvenGame());
+        break;
+      case CALC_GAME_KEY:
+        Engine.play(new CalcGame());
+        break;
+      case GCD_GAME_KEY:
+        Engine.play(new GcdGame());
+        break;
+      case PROGRESSION_GAME_KEY:
+        Engine.play(new ProgressionGame());
+        break;
+      case PRIME_GAME_KEY:
+        Engine.play(new PrimeGame());
+        break;
+      default:
+        break;
+    }
     Cli.SCANNER.close();
   }
 }
