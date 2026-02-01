@@ -7,11 +7,13 @@ public class Engine {
 
     /**
      * Play game for player.
-     * @param name player name
      * @param game game
      */
-    static void play(String name, Game game) {
+    static void play(Game game) {
         int winCount = 0;
+        Cli.showGreeting();
+        var name = Cli.readName();
+
         System.out.println(game.getRules());
         do {
             System.out.println("Question: " + game.getQuestion());

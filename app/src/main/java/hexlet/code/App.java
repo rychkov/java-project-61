@@ -46,19 +46,19 @@ public final class App {
           name = Cli.readName();
           break;
         case EVEN_GAME_KEY:
-          Engine.play(name, new EvenGame());
+          Engine.play(new EvenGame());
           break;
         case CALC_GAME_KEY:
-          Engine.play(name, new CalcGame());
+          Engine.play(new CalcGame());
           break;
         case GCD_GAME_KEY:
-          Engine.play(name, new GcdGame());
+          Engine.play(new GcdGame());
           break;
         case PROGRESSION_GAME_KEY:
-          Engine.play(name, new ProgressionGame());
+          Engine.play(new ProgressionGame());
           break;
         case PRIME_GAME_KEY:
-          Engine.play(name, new PrimeGame());
+          Engine.play(new PrimeGame());
           break;
         default:
           number = 0;
