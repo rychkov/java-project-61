@@ -11,7 +11,7 @@ public final class PrimeGame {
   public static final int THREE = 3;
 
   public static void play() {
-    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
     for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
       items[i] = getQAtuple();
     }
@@ -22,10 +22,10 @@ public final class PrimeGame {
     return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
   }
 
-  public static QAtuple getQAtuple() {
+  public static String[] getQAtuple() {
     var number = RANDOM.nextInt(Integer.MAX_VALUE);
     var answer = isPrime(number) ? YES : NO;
-    return new QAtuple(String.valueOf(number), answer);
+    return new String[]{String.valueOf(number), answer};
   }
 
   private static boolean isPrime(int number) {

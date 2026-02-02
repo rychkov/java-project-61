@@ -10,7 +10,7 @@ public final class CalcGame {
   private static final Random RANDOM = new Random();
 
   public static void play() {
-    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
     for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
       items[i] = getQAtuple();
     }
@@ -21,7 +21,7 @@ public final class CalcGame {
     return "What is the result of the expression?";
   }
 
-  public static QAtuple getQAtuple() {
+  public static String[] getQAtuple() {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
     var opCode = getSmallNumber(OP_BOUND);
@@ -42,7 +42,7 @@ public final class CalcGame {
       }
       default -> throw new UnsupportedOperationException("Unsupported opCode " + opCode);
     }
-    return new QAtuple("%d %s %d".formatted(number1, opSymbol, number2), answer);
+    return new String[]{"%d %s %d".formatted(number1, opSymbol, number2), answer};
   }
 
   private static int getSmallNumber(int bound) {

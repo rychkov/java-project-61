@@ -12,7 +12,7 @@ public final class ProgressionGame {
   private static final Random RANDOM = new Random();
 
   public static void play() {
-    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
     for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
       items[i] = getQAtuple();
     }
@@ -23,7 +23,7 @@ public final class ProgressionGame {
     return "What number is missing in the progression?";
   }
 
-  public static QAtuple getQAtuple() {
+  public static String[] getQAtuple() {
     var start = getSmallNumber(START_BOUND);
     var step = getSmallNumber(STEP_BOUND);
     var position = getSmallNumber(PROGRESSION_LENGTH);
@@ -40,7 +40,7 @@ public final class ProgressionGame {
         joiner.add(String.valueOf(value));
       }
     }
-    return new QAtuple(joiner.toString(), answer);
+    return new String[]{joiner.toString(), answer};
   }
 
   private static int getProgressionValue(int start, int step, int i) {

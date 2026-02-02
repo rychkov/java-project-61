@@ -9,7 +9,7 @@ public final class GcdGame {
   private static final Random RANDOM = new Random();
 
   public static void play() {
-    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
     for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
       items[i] = getQAtuple();
     }
@@ -20,12 +20,12 @@ public final class GcdGame {
     return "Find the greatest common divisor of given numbers.";
   }
 
-  public static QAtuple getQAtuple() {
+  public static String[] getQAtuple() {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
     var answer = String.valueOf(gcd(number1, number2));
 
-    return new QAtuple("%d %d".formatted(number1, number2), answer);
+    return new String[]{"%d %d".formatted(number1, number2), answer};
   }
 
   private static int gcd(int a, int b) {

@@ -11,7 +11,7 @@ public final class EvenGame {
   private static final Random RANDOM = new Random();
 
   public static void play() {
-    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
     for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
       items[i] = getQAtuple();
     }
@@ -24,8 +24,8 @@ public final class EvenGame {
 
   private static final Predicate<Integer> IS_EVEN = i -> i % 2 == 0;
 
-  public static QAtuple getQAtuple() {
+  public static String[] getQAtuple() {
     int number = RANDOM.nextInt();
-    return new QAtuple(String.valueOf(number), IS_EVEN.test(number) ? YES : NO);
+    return new String[]{String.valueOf(number), IS_EVEN.test(number) ? YES : NO};
   }
 }

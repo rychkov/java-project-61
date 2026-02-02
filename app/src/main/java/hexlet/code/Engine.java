@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.games.QAtuple;
-
 import java.util.Scanner;
 
 public class Engine {
@@ -11,26 +9,26 @@ public class Engine {
     /**
      * Play game for player.
      * @param rules rules
-     * @param items Q&A tuples
+     * @param items Q&A
      */
-    public static void play(String rules, QAtuple[] items) {
+    public static void play(String rules, String[][] items) {
         int winCount = 0;
         showGreeting();
         var name = readName();
 
         System.out.println(rules);
         for (var qa: items) {
-            System.out.println("Question: " + qa.question());
+            System.out.println("Question: " + qa[0]);
             System.out.print("Your answer: ");
             var input = readString();
 
-            boolean isValid = qa.answer().equals(input);
+            boolean isValid = qa[1].equals(input);
             if (isValid) {
                 winCount++;
                 System.out.println("Correct!");
             } else {
                 System.out.println(
-                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, qa.answer())
+                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, qa[1])
                 );
                 System.out.printf("Let's try again, %s!%n", name);
                 break;
