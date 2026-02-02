@@ -43,7 +43,7 @@ public final class Cli {
     do {
       if (SCANNER.hasNextInt()) {
         var value = SCANNER.nextInt();
-        System.out.println("> Input -> " + value);
+        //System.out.println("> Input -> " + value);
         return value;
       } else {
         //Skip non int input
