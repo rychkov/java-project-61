@@ -27,7 +27,6 @@ public final class App {
    */
   public static void main(final String[] args) {
     int number = 0;
-    String name = "";
     System.out.println("Please enter the game number and press Enter.");
 
     System.out.printf("%d - %s%n", GREETING_KEY, "Greet");
@@ -42,22 +41,21 @@ public final class App {
     switch (number) {
       case GREETING_KEY:
         Cli.showGreeting();
-        name = Cli.readName();
         break;
       case EVEN_GAME_KEY:
-        Engine.play(new EvenGame());
+        EvenGame.play();
         break;
       case CALC_GAME_KEY:
-        Engine.play(new CalcGame());
+        CalcGame.play();
         break;
       case GCD_GAME_KEY:
-        Engine.play(new GcdGame());
+        GcdGame.play();
         break;
       case PROGRESSION_GAME_KEY:
-        Engine.play(new ProgressionGame());
+        ProgressionGame.play();
         break;
       case PRIME_GAME_KEY:
-        Engine.play(new PrimeGame());
+        PrimeGame.play();
         break;
       default:
         break;

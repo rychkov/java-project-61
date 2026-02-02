@@ -1,24 +1,31 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Random;
 
-public final class GcdGame implements Game {
+public final class GcdGame {
   public static final int BOUND = 100;
-  private String answer;
   private static final Random RANDOM = new Random();
 
-  @Override
-  public String getRules() {
+  public static void play() {
+    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
+      items[i] = getQAtuple();
+    }
+    Engine.play(getRules(), items);
+  }
+
+  public static String getRules() {
     return "Find the greatest common divisor of given numbers.";
   }
 
-  @Override
-  public String getQuestion() {
+  public static QAtuple getQAtuple() {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
-    answer = String.valueOf(gcd(number1, number2));
+    var answer = String.valueOf(gcd(number1, number2));
 
-    return "%d %d".formatted(number1, number2);
+    return new QAtuple("%d %d".formatted(number1, number2), answer);
   }
 
   private static int gcd(int a, int b) {
@@ -33,17 +40,7 @@ public final class GcdGame implements Game {
     return a;
   }
 
-  private int getSmallNumber(int bound) {
+  private static int getSmallNumber(int bound) {
       return RANDOM.nextInt(bound);
-  }
-
-  @Override
-  public boolean isValidInput(String value) {
-    return answer.equals(value);
-  }
-
-  @Override
-  public String getCorrectAnswer() {
-    return answer;
   }
 }

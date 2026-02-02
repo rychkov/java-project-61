@@ -1,24 +1,32 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Random;
 
-public final class CalcGame implements Game {
+public final class CalcGame {
   public static final int BOUND = 100;
   public static final int OP_BOUND = 3;
-  private String answer;
   private static final Random RANDOM = new Random();
 
-  @Override
-  public String getRules() {
+  public static void play() {
+    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
+      items[i] = getQAtuple();
+    }
+    Engine.play(getRules(), items);
+  }
+
+  public static String getRules() {
     return "What is the result of the expression?";
   }
 
-  @Override
-  public String getQuestion() {
+  public static QAtuple getQAtuple() {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
     var opCode = getSmallNumber(OP_BOUND);
     String opSymbol;
+    String answer;
     switch (opCode) {
       case 0 -> {
         opSymbol = "+";
@@ -34,20 +42,10 @@ public final class CalcGame implements Game {
       }
       default -> throw new UnsupportedOperationException("Unsupported opCode " + opCode);
     }
-    return "%d %s %d".formatted(number1, opSymbol, number2);
+    return new QAtuple("%d %s %d".formatted(number1, opSymbol, number2), answer);
   }
 
-  private int getSmallNumber(int bound) {
+  private static int getSmallNumber(int bound) {
       return RANDOM.nextInt(bound);
-  }
-
-  @Override
-  public boolean isValidInput(String value) {
-    return answer.equals(value);
-  }
-
-  @Override
-  public String getCorrectAnswer() {
-    return answer;
   }
 }

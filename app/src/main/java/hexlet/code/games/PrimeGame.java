@@ -1,27 +1,34 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Random;
 
-public final class PrimeGame implements Game {
+public final class PrimeGame {
   private static final String YES = "yes";
   private static final String NO = "no";
   private static final Random RANDOM = new Random();
   public static final int THREE = 3;
-  private String answer;
 
-  @Override
-  public String getRules() {
+  public static void play() {
+    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
+      items[i] = getQAtuple();
+    }
+    Engine.play(getRules(), items);
+  }
+
+  public static String getRules() {
     return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
   }
 
-  @Override
-  public String getQuestion() {
+  public static QAtuple getQAtuple() {
     var number = RANDOM.nextInt(Integer.MAX_VALUE);
-    answer = isPrime(number) ? YES : NO;
-    return String.valueOf(number);
+    var answer = isPrime(number) ? YES : NO;
+    return new QAtuple(String.valueOf(number), answer);
   }
 
-  private boolean isPrime(int number) {
+  private static boolean isPrime(int number) {
     if (number < 2) {
       return false;
     }
@@ -38,15 +45,5 @@ public final class PrimeGame implements Game {
       }
     }
     return true;
-  }
-
-  @Override
-  public boolean isValidInput(String value) {
-    return answer.equals(value);
-  }
-
-  @Override
-  public String getCorrectAnswer() {
-    return answer;
   }
 }

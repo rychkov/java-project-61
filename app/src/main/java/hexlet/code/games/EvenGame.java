@@ -1,35 +1,31 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Random;
 import java.util.function.Predicate;
 
-public final class EvenGame implements Game {
+public final class EvenGame {
   private static final String YES = "yes";
   private static final String NO = "no";
   private static final Random RANDOM = new Random();
-  private String answer;
 
-  @Override
-  public String getRules() {
+  public static void play() {
+    QAtuple[] items = new QAtuple[Engine.REQUIRED_WIN_COUNT];
+    for (int i = 0; i < Engine.REQUIRED_WIN_COUNT; i++) {
+      items[i] = getQAtuple();
+    }
+    Engine.play(getRules(), items);
+  }
+
+  public static String getRules() {
     return "Answer 'yes' if the number is even, otherwise answer 'no'.";
   }
 
-  private  final Predicate<Integer> isEven = i -> i % 2 == 0;
+  private static final Predicate<Integer> IS_EVEN = i -> i % 2 == 0;
 
-  @Override
-  public String getQuestion() {
+  public static QAtuple getQAtuple() {
     int number = RANDOM.nextInt();
-    answer = isEven.test(number) ? YES : NO;
-    return String.valueOf(number);
-  }
-
-  @Override
-  public boolean isValidInput(String value) {
-    return answer.equals(value);
-  }
-
-  @Override
-  public String getCorrectAnswer() {
-    return answer;
+    return new QAtuple(String.valueOf(number), IS_EVEN.test(number) ? YES : NO);
   }
 }

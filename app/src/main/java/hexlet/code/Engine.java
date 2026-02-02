@@ -1,39 +1,86 @@
 package hexlet.code;
 
-import hexlet.code.games.Game;
+import hexlet.code.games.QAtuple;
+
+import java.util.Scanner;
 
 public class Engine {
-    private static final int REQUIRED_WIN_COUNT = 3;
+    public static final int REQUIRED_WIN_COUNT = 3;
+    public static final Scanner SCANNER = new Scanner(System.in);
 
     /**
      * Play game for player.
-     * @param game game
+     * @param rules rules
+     * @param items Q&A tuples
      */
-    static void play(Game game) {
+    public static void play(String rules, QAtuple[] items) {
         int winCount = 0;
-        Cli.showGreeting();
-        var name = Cli.readName();
+        showGreeting();
+        var name = readName();
 
-        System.out.println(game.getRules());
-        do {
-            System.out.println("Question: " + game.getQuestion());
+        System.out.println(rules);
+        for (var qa: items) {
+            System.out.println("Question: " + qa.question());
             System.out.print("Your answer: ");
-            var input = Cli.readString();
+            var input = readString();
 
-            boolean isValid = game.isValidInput(input);
+            boolean isValid = qa.answer().equals(input);
             if (isValid) {
                 winCount++;
                 System.out.println("Correct!");
             } else {
                 System.out.println(
-                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, game.getCorrectAnswer())
+                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, qa.answer())
                 );
                 System.out.printf("Let's try again, %s!%n", name);
                 break;
             }
-        } while (winCount < REQUIRED_WIN_COUNT);
-        if (winCount == REQUIRED_WIN_COUNT) {
+        }
+        if (winCount == items.length) {
             System.out.printf("Congratulations, %s!%n", name);
         }
+    }
+
+    /**
+     * Show greetings.
+     */
+    public static void showGreeting() {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.println("May I have your name?");
+    }
+
+    /**
+     * Read user name.
+     * @return user name
+     */
+    public static String readName() {
+        var name = readString();
+        System.out.printf("Hello, %s!%n", name);
+        return name;
+    }
+
+    /**
+     * Read string from console.
+     * @return string
+     */
+    public static String readString() {
+        return SCANNER.next();
+    }
+
+    /**
+     * Read int from console.
+     * @return value
+     */
+    public static int readInt() {
+        do {
+            if (SCANNER.hasNextInt()) {
+                var value = SCANNER.nextInt();
+                //System.out.println("> Input -> " + value);
+                return value;
+            } else {
+                //Skip non int input
+                System.out.println("> Unexpected input -> " + SCANNER.next());
+            }
+        } while (true);
     }
 }
