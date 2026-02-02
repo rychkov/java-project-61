@@ -14,7 +14,7 @@ public final class EvenGame implements Game {
     return "Answer 'yes' if the number is even, otherwise answer 'no'.";
   }
 
-  private  final Predicate<Integer> isEven = i -> i % 2 != 0;
+  private  final Predicate<Integer> isEven = i -> i % 2 == 0;
 
   @Override
   public String getQuestion() {
