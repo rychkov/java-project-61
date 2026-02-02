@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Engine {
     public static final int REQUIRED_WIN_COUNT = 3;
     public static final Scanner SCANNER = new Scanner(System.in);
+    public static final int ANSWER_INDEX = 1;
+    public static final int QUESTION_INDEX = 0;
 
     /**
      * Play game for player.
@@ -12,23 +14,23 @@ public class Engine {
      * @param items Q&A
      */
     public static void play(String rules, String[][] items) {
-        int winCount = 0;
+        int winCount = QUESTION_INDEX;
         showGreeting();
         var name = readName();
 
         System.out.println(rules);
         for (var qa: items) {
-            System.out.println("Question: " + qa[0]);
+            System.out.println("Question: " + qa[QUESTION_INDEX]);
             System.out.print("Your answer: ");
             var input = readString();
 
-            boolean isValid = qa[1].equals(input);
+            boolean isValid = qa[ANSWER_INDEX].equals(input);
             if (isValid) {
                 winCount++;
                 System.out.println("Correct!");
             } else {
                 System.out.println(
-                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, qa[1])
+                        "'%s' is wrong answer ;(. Correct answer was '%s' ".formatted(input, qa[ANSWER_INDEX])
                 );
                 System.out.printf("Let's try again, %s!%n", name);
                 break;
