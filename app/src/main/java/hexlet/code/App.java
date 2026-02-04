@@ -6,11 +6,13 @@ import hexlet.code.games.GcdGame;
 import hexlet.code.games.ProgressionGame;
 import hexlet.code.games.PrimeGame;
 
+import java.util.Scanner;
+
 /**
  * App main class.
  */
 public final class App {
-
+  public static final Scanner SCANNER = new Scanner(System.in);
   public static final int GREETING_KEY = 1;
   public static final int EVEN_GAME_KEY = 2;
   public static final int CALC_GAME_KEY = 3;
@@ -37,7 +39,7 @@ public final class App {
     System.out.printf("%d - %s%n", PRIME_GAME_KEY, "Prime");
     System.out.printf("%d - %s%n", 0, "Exit");
 
-    number = Cli.readInt();
+    number = readInt();
     switch (number) {
       case GREETING_KEY:
         Cli.showGreeting();
@@ -60,6 +62,19 @@ public final class App {
       default:
         break;
     }
-    Cli.SCANNER.close();
+    SCANNER.close();
+  }
+
+  private static int readInt() {
+    do {
+      if (SCANNER.hasNextInt()) {
+        var value = SCANNER.nextInt();
+        //System.out.println("> Input -> " + value);
+        return value;
+      } else {
+        //Skip non int input
+        System.out.println("> Unexpected input -> " + SCANNER.next());
+      }
+    } while (true);
   }
 }

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public final class CalcGame {
   public static final int BOUND = 100;
-  public static final int OP_BOUND = 3;
+  private static final String[] OPERATIONS = {"+", "-", "*"};
   private static final Random RANDOM = new Random();
 
   public static void play() {
@@ -24,25 +24,18 @@ public final class CalcGame {
   public static String[] getQAtuple() {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
-    var opCode = getSmallNumber(OP_BOUND);
-    String opSymbol;
-    String answer;
-    switch (opCode) {
-      case 0 -> {
-        opSymbol = "+";
-        answer = String.valueOf(number1 + number2);
-      }
-      case 1 -> {
-        opSymbol = "-";
-        answer = String.valueOf(number1 - number2);
-      }
-      case 2 -> {
-        opSymbol = "*";
-        answer = String.valueOf(number1 * number2);
-      }
-      default -> throw new UnsupportedOperationException("Unsupported opCode " + opCode);
-    }
-    return new String[]{"%d %s %d".formatted(number1, opSymbol, number2), answer};
+    var opCode = getSmallNumber(OPERATIONS.length);
+    String answer = getAnswer(number1, number2, OPERATIONS[opCode]);
+    return new String[]{"%d %s %d".formatted(number1, OPERATIONS[opCode], number2), answer};
+  }
+
+  private static String getAnswer(int number1, int number2, String operation) {
+      return switch (operation) {
+          case "+" -> String.valueOf(number1 + number2);
+          case "-" -> String.valueOf(number1 - number2);
+          case "*" -> String.valueOf(number1 * number2);
+          default -> throw new UnsupportedOperationException("Unsupported opCode " + operation);
+      };
   }
 
   private static int getSmallNumber(int bound) {
