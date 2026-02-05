@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public final class CalcGame {
-  public static final int BOUND = 100;
+  private static final int BOUND = 100;
   private static final String[] OPERATIONS = {"+", "-", "*"};
   private static final Random RANDOM = new Random();
 
@@ -25,15 +25,15 @@ public final class CalcGame {
     var number1 = getSmallNumber(BOUND);
     var number2 = getSmallNumber(BOUND);
     var opCode = getSmallNumber(OPERATIONS.length);
-    String answer = getAnswer(number1, number2, OPERATIONS[opCode]);
+    String answer = String.valueOf(getAnswer(number1, number2, OPERATIONS[opCode]));
     return new String[]{"%d %s %d".formatted(number1, OPERATIONS[opCode], number2), answer};
   }
 
-  private static String getAnswer(int number1, int number2, String operation) {
+  private static int getAnswer(int number1, int number2, String operation) {
       return switch (operation) {
-          case "+" -> String.valueOf(number1 + number2);
-          case "-" -> String.valueOf(number1 - number2);
-          case "*" -> String.valueOf(number1 * number2);
+          case "+" -> number1 + number2;
+          case "-" -> number1 - number2;
+          case "*" -> number1 * number2;
           default -> throw new UnsupportedOperationException("Unsupported opCode " + operation);
       };
   }

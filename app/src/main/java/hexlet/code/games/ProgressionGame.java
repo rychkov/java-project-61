@@ -3,7 +3,6 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.StringJoiner;
 
 public final class ProgressionGame {
   private static final int START_BOUND = 20;
@@ -29,18 +28,18 @@ public final class ProgressionGame {
     var position = getSmallNumber(PROGRESSION_LENGTH);
     String answer = "";
 
-    StringJoiner joiner = new StringJoiner(" ");
+    var progression = getProgression(start, step, PROGRESSION_LENGTH);
+    answer = progression[position];
+    progression[position] = "..";
+    return new String[]{String.join(" ", progression), answer};
+  }
 
-    for (int i = 0; i < PROGRESSION_LENGTH; i++) {
-      var value = getProgressionValue(start, step, i);
-      if (i == position) {
-        answer = String.valueOf(value);
-        joiner.add("..");
-      } else {
-        joiner.add(String.valueOf(value));
-      }
+  private static String[] getProgression(int start, int step, int len) {
+    String[] result = new String[len];
+    for (int i = 0; i < len; i++) {
+      result[i] = String.valueOf(getProgressionValue(start, step, i));
     }
-    return new String[]{joiner.toString(), answer};
+    return result;
   }
 
   private static int getProgressionValue(int start, int step, int i) {

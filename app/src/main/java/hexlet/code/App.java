@@ -60,6 +60,7 @@ public final class App {
         PrimeGame.play();
         break;
       default:
+        System.err.println("Unknown user choice " + number);
         break;
     }
     SCANNER.close();
@@ -69,10 +70,8 @@ public final class App {
     do {
       if (SCANNER.hasNextInt()) {
         var value = SCANNER.nextInt();
-        //System.out.println("> Input -> " + value);
         return value;
       } else {
-        //Skip non int input
         System.out.println("> Unexpected input -> " + SCANNER.next());
       }
     } while (true);

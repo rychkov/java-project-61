@@ -8,7 +8,6 @@ public final class PrimeGame {
   private static final String YES = "yes";
   private static final String NO = "no";
   private static final Random RANDOM = new Random();
-  public static final int THREE = 3;
 
   public static void play() {
     String[][] items = new String[Engine.REQUIRED_WIN_COUNT][2];
@@ -39,7 +38,8 @@ public final class PrimeGame {
       return false;
     }
     var sqrt = Math.round(Math.sqrt(number));
-    for (int i = THREE; i < sqrt; i += 2) {
+    final int three = 3;
+    for (int i = three; i < sqrt; i += 2) {
       if (number % i == 0) {
         return false;
       }
